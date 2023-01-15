@@ -1,5 +1,9 @@
 const POINTS: u32 = 100;
 
+const soldier = {
+    name: 'adsf'; 
+}
+
 fn main() {
     calc_with_mult();
     calc_constants();

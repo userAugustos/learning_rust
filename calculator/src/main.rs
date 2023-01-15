@@ -14,6 +14,8 @@ fn main() {
     */
     let calc = calc.trim();
 
+    println("")
+
     let result = match calc {
         "sum" => sum(1, 2),
         "subtraction" => subtraction(1, 2),
@@ -26,7 +28,6 @@ fn main() {
 }
 
 fn sum(n1: i32, n2: i32) -> i32 {
-    // typing the return
     return n1 + n2;
 }
 
