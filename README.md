@@ -71,6 +71,7 @@ const points: u32 = 100; //SUCCESS
   No rust assim como em quase todas as linguagens de programação, temos o shadowing de variaveis, onde atribuímos novos valores a variaveis já definidas com valores anteriores, claro, isso não se aplica a constantes.
 
   O Conceito de shadowing deve ser bem intuitivo e claro, já que, naturalmente, com variáveis mutáveis, acabamos nos deparando com situações onde re-atribuímos valor a elas mesmas, adicionando ou removendo algo, ou alterando completamente o valor.
+  Com o Shadowing, estamos essencialmente, criando uma nova variável, com o mesmo nome de uma anterior.
 
   Um exemplo util:
 
@@ -82,6 +83,24 @@ const points: u32 = 100; //SUCCESS
 
       println!("{shadow_var}");
   } // => shadowing var
+  ```
+
+  Comparando:
+
+  ```rust
+  fn shadowing_vars() {
+      let spaces = "  ";
+
+      let spaces = spaces.len();
+  } // => spaces = 2
+  ```
+
+  ```rust
+  fn shadowing_vars() {
+      let mut spaces = "  ";
+
+      let spaces = spaces.len();
+  } // => Error: mismatched types (Since the mutable variable is string (&str) and we tried to add a value usize)
   ```
 
 **Concatenando Strings**
@@ -107,6 +126,65 @@ fn concatenate_string() {
 
     let full_address = address.clone() + "Bairro XY";
 
-    println!("{full_address}"); // => Felipe Augustos
+    println!("{full_address}"); // => Rua X Bairro XY
 }
 ```
+## Data Types
+
+Rust é uma linguagem fortemente tipada, ou seja, você precisa declarar o tipo de dados que você está trabalhando, para o compilador.
+O compilador consegue inferir tipos, baseado em usagem direta, por exemplo:
+
+```rust
+fn main() {
+    let x = 5;
+    let y = 10;
+    let z = x + y;
+
+    println!("The value of z is {}", z);
+}
+```
+Nesse exemplo a cima, o compilador sabe que `x` é um `u32` e `y` é um `u32`, então ele sabe que o resultado de `x + y` também é um `u32`, e por isso, ele pode inferir a tipagem.
+
+### Tipos de dados
+
+#### Temos por principal, esses tipos de dados:
+
+**Tipos Escalares**
+Rust possui 4 tipos escalares, que são:
+
+- Tipos Inteiros:
+  - `u8`, `u16`, `u32`, `u64`, `u128`
+  Tipos inteiros no rust, são bastante proximos a forma que usamos numeros no dia a dia, dependendo do tamanho que seu numero pode chdegar, você escolhe um tipo de acordo com o tamanho:
+  ```rust
+  let x: u8 = 5; // x é um u8
+  let y: u16 = 5; // y é um u16
+  let z: u32 = 5; // z é um u32
+  ```
+  1. u8: 8 bits (1 byte)
+    - Intervalo: 0 a 255
+    - x ocupa 1 byte na memória
+
+
+  2. u16: 16 bits (2 bytes)
+
+    - Intervalo: 0 a 65.535
+    - y ocupa 2 bytes na memória
+
+  3. u32: 32 bits (4 bytes)
+
+    - Intervalo: 0 a 4.294.967.295
+    - z ocupa 4 bytes na memória
+
+  Outros tipos existem como vimos e variam com o seu tamanho.
+  Seguiindo a forma como usamos numeros no dia a dia, rust possui uma definição inteiros positivos e negativos, sendo os positivos iniciados com `u` e negativos com `i`
+
+  ```rust
+  let x: i8 = 5; // x é um i8
+  let y: i16 = 5; // y é um i16
+  let z: i32 = 5; // z é um i32
+  ```
+  Isso apenas muda que esses numeros podem ter valores negativos.
+
+  Então como você pode saber qual tipo de inteiro usar? Se sentir-se inseguro, as escolhas padrões do Rust geralmente são boas, e por padrão os inteiros são do tipo i32: Esse tipo geralmente é o mais rápido, até em sistemas de 64-bit. A principal situação em que você usuaria isize ou usize é indexar algum tipo de coleção.
+
+- Tipos de Ponto Float:
