@@ -2,16 +2,16 @@ const POINTS: u32 = 100;
 
 fn main() {
     calc_with_mult();
-    calc_constants();
+    calc_constants(5);
     shadowing_vars();
-    concatenate_string();
+    concatenate_string("Rua X".to_owned());
 }
 
-fn calc_constants() {
-    const MULTIPLICATOR: u32 = 5;
-    let math: u32 = MULTIPLICATOR * POINTS; // so here we are mutiplaying a global const and one const from this fn, they could be in a const as well, but i want it in a let
+fn calc_constants(multiplicator: u32) {
+    // const MULTIPLICATOR: u32 = 5;
+    let math: u32 = multiplicator * POINTS; // so here we are mutiplaying a global const and one const from this fn, they could be in a const as well, but i want it in a let
 
-    println!("Multiplying {POINTS} * {MULTIPLICATOR}: {}", math)
+    println!("Multiplying {POINTS} * {multiplicator}: {}", math)
 }
 
 fn calc_with_mult() {
@@ -70,13 +70,13 @@ fn shadowing_vars() {
 		mut_spaces = " "; // mudar o valor da variavel de forma mais simples, consumindo menos memoria.
 }
 
-fn concatenate_string() {
+fn concatenate_string(address: String) {
     let mut name: String = "Felipe".to_owned(); // obviously need to be mutable
     name.push_str(" Augustos"); // Adding last name
 
     println!("{name}"); // => Felipe Augustos
 
-    let address = "Rua X".to_owned();
+    // let address = "Rua X".to_owned();
 
     let full_address = address.clone() + "Bairro XY";
 

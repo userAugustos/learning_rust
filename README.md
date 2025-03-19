@@ -190,3 +190,47 @@ Rust possui 4 tipos escalares, que são:
   **Para referencias em codigo, veja intergert_study.rs**
 
 - Tipos de Ponto Float:
+
+
+
+## Function
+
+Statements and expressions
+
+Rust e uma linguagem baseada em expressao (?)
+
+Statement: Instruçoes que nao retornam valor
+
+Expressions: executam para um valor resultante
+
+criar uma variavel e atribuir valor e uma declaraçao (statement), assim como criar funçao
+
+```rust
+fn main() {
+	let y = 6;
+}
+```
+
+Ok, entao isso e importante por que Rust sendo baseado em expressao, nao pode executar:
+
+
+`let x = (let y = 6);`
+
+Tambem qualquer coisa que termine com `;` vai ser tratado como statement e nao vai retornar valor algum
+
+entao por exemplo, podemos criar um statement como funcao, e expressar o seu retorno:
+
+```rust
+fn five() -> i32 {
+  5  // Sem ponto e vírgula - expressão que retorna 5
+}
+
+main() {
+	five() // isso tambem e uma expressao, estamos chamando, isso vai resultar em um valor
+}
+```
+ Entao sim, essencialmente, em rust teremos em varios momentos, o `return` implicito.
+
+ Importante que, mesmo que uma funçao, nao retorne nada, ou seja, um `statement`, toda funçao em rust, por padrao retorna `()`, portanto, definir uma funçao que nao tem retorno, e um statement, executar essa funcao: `example() -> ()` e uma expression
+
+Veja o codigo no `functions/main.rs`
