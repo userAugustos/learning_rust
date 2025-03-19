@@ -187,4 +187,6 @@ Rust possui 4 tipos escalares, que são:
 
   Então como você pode saber qual tipo de inteiro usar? Se sentir-se inseguro, as escolhas padrões do Rust geralmente são boas, e por padrão os inteiros são do tipo i32: Esse tipo geralmente é o mais rápido, até em sistemas de 64-bit. A principal situação em que você usuaria isize ou usize é indexar algum tipo de coleção.
 
+  **Para referencias em codigo, veja intergert_study.rs**
+
 - Tipos de Ponto Float:
